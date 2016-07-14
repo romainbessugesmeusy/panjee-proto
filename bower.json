@@ -1,0 +1,13 @@
+{
+  "name": "panjee_proto",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "bootstrap-sidebar": "0.2.2",
+    "jquery": "~2.2.4"
+  },
+  "devDependencies": {},
+  "resolutions": {
+    "jquery": "~2.2.4"
+  }
+}
