@@ -1,0 +1,93 @@
+.navbar-login {
+  width: 305px;
+  padding: 10px;
+  padding-bottom: 0;
+}
+.navbar-login-session {
+  padding: 10px;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+.icon-size {
+  font-size: 87px;
+}
+.sidebar {
+  background: #f5f5f5;
+  border-right: 1px solid #eee;
+  padding-top: 1rem;
+  font-size: 12px;
+  padding-bottom: 10rem;
+}
+.sidebar .arrow {
+  position: absolute;
+  font-size: 10px;
+  margin-right: 0.5rem;
+  left: -1.5em;
+}
+.sidebar ul {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 1em;
+}
+.sidebar li {
+  display: none;
+  position: relative;
+}
+.sidebar li > .arrow:before {
+  content: '▶';
+}
+.sidebar li.open > ul > li {
+  display: block;
+}
+.sidebar li.open > .arrow:before {
+  content: '▼';
+}
+.sidebar ul.nav {
+  padding: 1rem;
+}
+.sidebar ul.nav > li {
+  display: block;
+}
+.sidebar ul.nav > li > a {
+  padding: 0;
+}
+.admin.entities tr {
+  margin-top: -2px;
+}
+.admin.entities tfoot {
+  opacity: 0.5;
+}
+.admin.entities tfoot .drag-handle span {
+  display: none;
+}
+.admin.entities td,
+tbody tr.list-entity td,
+.list-entity td {
+  vertical-align: middle;
+}
+.admin.entities td input,
+tbody tr.list-entity td input,
+.list-entity td input,
+.admin.entities td textarea,
+tbody tr.list-entity td textarea,
+.list-entity td textarea {
+  width: 100%;
+}
+.admin.entities td.drag-handle,
+tbody tr.list-entity td.drag-handle,
+.list-entity td.drag-handle {
+  text-align: center;
+  width: 1.5rem;
+  vertical-align: middle;
+  cursor: move;
+}
+.admin.entities td.drag-handle span,
+tbody tr.list-entity td.drag-handle span,
+.list-entity td.drag-handle span {
+  opacity: 0.2;
+}
+.admin.entities td.drag-handle:hover span,
+tbody tr.list-entity td.drag-handle:hover span,
+.list-entity td.drag-handle:hover span {
+  opacity: 0.5;
+}

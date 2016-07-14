@@ -1,0 +1,12 @@
+extends layout
+include components/registrationForm
+block content
+  .row
+    .col-md-8.col-md-offset-2
+      .col-sm-10.col-sm-offset-2
+        h2 Créer un compte
+      form(action='/inscription', method='post').form-horizontal
+        +registrationForm
+        .form-group.submit
+          .col-sm-offset-2.col-sm-10
+            input(type='submit', value='Créer un compte').btn.btn-primary

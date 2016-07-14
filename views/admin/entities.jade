@@ -1,0 +1,74 @@
+extends ../layout
+
+mixin menu(obj, name, parent)
+  -var path = (parent) ? parent + '.' + name : name
+  -var hasSub = Object.keys(obj).length > 1 || typeof obj._id === 'undefined'
+  li(data-path=path)
+    if(obj._id)
+      a(href='/admin/entities/' + obj._id)=name
+    else
+      span= name
+
+    if(hasSub)
+      span.arrow
+      ul
+        each sub, subName in obj
+          if(subName !== '_id')
+            +menu(sub, subName, name)
+
+
+
+block content
+
+  datalist#modulesDataList
+    each e in entities
+      if(e.type === 'module')
+        option(value=e.name)
+
+  datalist#listsDataList
+    each e in entities
+      if(e.type === 'list')
+        option(value=e.name)
+
+  datalist#settersDataList
+    each e in entities
+      if(e.type === 'setter')
+        option(value=e.name)
+
+  .row.admin.entities
+    .entities.col-xs-7.col-sm-3.col-md-3.sidebar.sidebar-left.sidebar-animate.sidebar-md-show
+      .form-group(style='display:inline;')
+        .input-group(style='display:table;')
+          span.input-group-addon(style='width:1%;')
+            span.glyphicon.glyphicon-filter
+          input.form-control(name='filter', placeholder='Filtrer', autocomplete='on', autofocus='autofocus', type='text')
+      ul.nav.navbar-stacked
+
+
+        each obj, name in entityTree
+          +menu(obj, name)
+
+        li.newItem
+          a(href="/admin/entities/module/new")
+            em Créer un nouveau <b>module</b>
+        li.newItem
+          a(href="/admin/entities/list/new")
+            em Créer une nouvelle <b>liste</b>
+        li.newItem
+          a(href="/admin/entities/setter/new")
+            em Créer un nouveau <b>setter</b>
+
+    .col-md-9.col-md-offset-3
+      form(data-type=entity.type)#entityForm
+        input(type='hidden', value=entity._id)#entityId
+        .form-group
+          label.control-label Nom unique
+          input.form-control(placeholder='liste.varietes.pommes', name='name', value=entity.name)#entityName
+        block fields
+
+        .form-group.submit
+          .col-sm-offset-2.col-sm-10
+            input(type='submit', value='Enregistrer').btn.btn-primary.btn-block
+
+block page_scripts
+  script(src='/javascripts/admin/entities.js')

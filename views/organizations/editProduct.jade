@@ -1,0 +1,28 @@
+extends ../layout
+include ../components/module
+
+block content
+  input#formUrl(type='hidden', value='/api/organizations/#{organization._id}/products/#{product._id}')
+  input#organizationUrl(type='hidden', value='/organizations/#{organization._id}')
+  input#formMethod(type='hidden', value='put')
+  input#jsonProduct(type='hidden', value=JSON.stringify(product))
+
+
+  .container#productForm
+
+    a.btn.btn-default(href='/organizations/#{organization._id}')
+      i.glyphicon.glyphicon-arrow-left &nbsp;
+      span Retour à l'organisation
+    h2 Modifier un produit
+
+    .form-group
+      label.form-label Nom du produit
+      input#productName(type='text', value=product.name).form-control
+
+    .panel-group.accordion
+      each module in modules
+        +module(module, product.props[module.name])
+
+    button.btn.btn-primary.save Enregistrer
+block page_scripts
+  script(src='/javascripts/productForm.js')

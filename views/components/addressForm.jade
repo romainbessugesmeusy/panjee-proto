@@ -1,0 +1,17 @@
+mixin address_form(inputName, address)
+
+  - var val = (typeof address === 'undefined') ? {lines: ['', '']} : address
+
+  .form-group.address
+    label.col-sm-2.control-label Adresse
+    .line.col-sm-10
+      input(name=inputName + '[lines]', placeholder='N° de la voie, Nom de la voie', value=val.lines[0]).form-control
+    .line.col-sm-10.col-sm-offset-2
+      input(name=inputName + '[lines]', placeholder='Appartement, Bâtiment, Escalier', value=val.lines[1]).form-control
+    .location.col-sm-10.col-sm-offset-2
+      input(name=inputName + '[postalCode]', placeholder='34000', value=val.postalCode).form-control
+      input(name=inputName + '[city]', placeholder='MONTPELLIER', value=val.city).form-control
+    .country.col-sm-10.col-sm-offset-2
+      select(name=inputName + '[country]').form-control
+        option(value='FR', selected=(val.country === 'FR')) France
+        option(value='ES', selected=(val.country === 'ES')) Espagne

@@ -1,0 +1,21 @@
+extends ../node_modules/jade-bootstrap/_bootstrap
+block styles
+  link(rel='stylesheet', href='/lib/bootstrap/dist/css/bootstrap.min.css')
+  link(rel='stylesheet', href='/lib/bootstrap-sidebar/dist/css/sidebar.css')
+  link(rel='stylesheet', href='/lib/dragula.js/dist/dragula.min.css')
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  block page_styles
+
+block body
+  include ./components/navbar
+  .container-fluid
+    block content
+
+block scripts
+  script(src='/lib/jquery/dist/jquery.min.js')
+  script(src='/lib/bootstrap/dist/js/bootstrap.min.js')
+  script(src='/lib/bootstrap-sidebar/dist/js/sidebar.js')
+  script(src='/lib/dragula.js/dist/dragula.min.js')
+  script(src='/javascripts/components/module.js')
+  block page_scripts
+

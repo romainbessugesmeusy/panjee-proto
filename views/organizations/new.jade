@@ -1,0 +1,10 @@
+extends ../layout
+include ../components/organizationForm
+block content
+  .row
+      .col-md-8.col-md-offset-2
+        h1 Créer une nouvelle organisation
+        form.form-horizontal(method='post')
+          +organizationForm()
+          .form-group
+            button.btn-primary.btn.btn-block Créer une nouvelle organisation

@@ -1,0 +1,79 @@
+extends ../entities
+
+block fields
+
+  input(type='hidden',name='type', value='module')#entityType
+  input(type='hidden',name='type', value='fields')#itemsPropName
+
+  datalist#fieldTypesList
+    option(value='text')
+    option(value='select')
+    option(value='radioButtonGroup')
+    option(value='checkboxGroup')
+    option(value='textarea')
+    option(value='number')
+
+  .form-group
+    label.control-label Cible
+    select(name='target').form-control
+      option(value='product') Produit
+      option(value='organization') Organisation
+      option(value='user') Utilisateur
+
+
+  .form-group
+    label.control-label Champs
+
+  //type	choices	options	visible	required	value	readonly	hint.fr	hint.en	validation	style
+  table.table.table-bordered.table-condensed
+    thead
+      tr
+        th
+        th(style='width:100px') name
+        th label
+        th type
+        th(style='width:500px') choices
+        //th options
+        //th visible
+        th required
+        th value
+        //th readonly
+        //th hint
+        //th validation
+        //th style
+        th
+
+    tbody#entity-list-items(data-name='fields')
+      each item in entity.fields || []
+        tr.list-entity
+          td.drag-handle: span.glyphicon.glyphicon-move
+          td: input(type='text', value=item.name, name='name')
+          td: input(type='text', value=item.label, name='label')
+          td: input(type='text', value=item.type, name='type', list='fieldTypesList')
+          td: input(type='text', value=item.choices, name='choices', list='listsDataList')
+          //td: input(type='text', value=item.options, name='options')
+          td: input(type='text', value=item.visible, name='visible')
+          //td: input(type='text', value=item.required, name='required')
+          td: input(type='text', value=item.value, name='value')
+          //td: input(type='text', value=item.readonly, name='readonly')
+          //td: input(type='text', value=item.hint, name='hint')
+          //td: input(type='text', value=item.validation, name='validation')
+          //td: input(type='text', value=item.style, name='style')
+          td: button.btn.btn-default.btn-sm.btn-block &times;
+    tfoot
+      tr
+        td.drag-handle: span.glyphicon.glyphicon-move
+        td: input(type='text', name='name')
+        td: input(type='text', name='label')
+        td: input(type='text', name='type',list='fieldTypesList')
+        td: input(type='text', name='choices', list='listsDataList')
+        //td: input(type='text', name='options')
+        td: input(type='text', name='visible')
+        //td: input(type='text', name='required')
+        td: input(type='text', name='value')
+        //td: input(type='text', name='readonly')
+        //td: input(type='text', name='hint')
+        //td: input(type='text', name='validation')
+        //td: input(type='text', name='style')
+        td: button.btn.btn-primary.btn-block.btn-sm +
+

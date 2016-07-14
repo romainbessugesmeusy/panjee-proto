@@ -1,0 +1,15 @@
+extends layout
+
+include components/module
+
+block content
+
+  .container
+    h2 Dashboard
+
+    h3 Catalogue
+
+    .panel-group.accordion
+      each module in modules
+          +module(module)
+      pre#debug

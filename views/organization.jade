@@ -1,0 +1,21 @@
+extends layout
+block content
+  .container
+    h1= organization.name
+    address
+      each line in organization.address.lines
+        p= line
+      p= organization.address.postalCode + ' ' + organization.address.city + ' ' + organization.address.country
+    a.btn.btn-primary(href='/organizations/#{organization._id}/edit') Modifier
+
+    h2 Produits
+    div
+      a.btn.btn-primary(href='/organizations/#{organization._id}/new-product') Ajouter un produit
+    p &nbsp;
+    ul.list-group
+      each product in organization.products
+        li.list-group-item
+          a.product(href='/organizations/#{organization._id}/products/#{product._id}')
+            span= product.name
+
+  //pre=JSON.stringify(organization, null, 2)

@@ -1,0 +1,31 @@
+extends ../entities
+
+block fields
+
+  input(type='hidden',name='type', value='setter')#entityType
+  input(type='hidden',name='type', value='setters')#itemsPropName
+
+  .form-group
+    label.control-label Setters
+
+  table.table.table-bordered.table-condensed
+    thead
+      tr
+        th
+        th name
+        th value
+        th
+    tbody#entity-list-items
+      each item in entity.items || []
+        tr.list-entity
+          td.drag-handle: span.glyphicon.glyphicon-move
+          td: input(type='text', value=item.name, name='name')
+          td: input(type='text', value=item.label, name='value')
+          td: button.btn.btn-default.btn-sm.btn-block &times;
+    tfoot
+      tr
+        td.drag-handle: span.glyphicon.glyphicon-move
+        td: input(type='text', name='name', placeholder='Propriété')
+        td: input(type='text', name='label', placeholder='Valeur')
+        td: button.btn.btn-primary.btn-block.btn-sm +
+

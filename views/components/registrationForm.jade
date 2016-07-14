@@ -1,0 +1,23 @@
+include ./organizationForm
+mixin registrationForm()
+  .form-group
+    label.col-sm-2.control-label Email
+    .col-sm-10
+      input(type='email', name='email').form-control
+  .form-group
+    label.col-sm-2.control-label Prénom
+    .col-sm-10
+      input(name='firstname').form-control
+  .form-group
+    label.col-sm-2.control-label Nom
+    .col-sm-10
+      input(name='lastname').form-control
+  .form-group
+    label.col-sm-2.control-label Identifiant
+    .col-sm-10
+      input(name='username').form-control
+  .form-group
+    label.col-sm-2.control-label Mot de passe
+    .col-sm-10
+      input(name='password').form-control
+  +organizationForm()

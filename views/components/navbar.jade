@@ -1,0 +1,45 @@
+nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href='/') Panjee Beta
+
+    #searchbar.navbar-collapse.collapse
+      ul.nav.navbar-nav.navbar-right
+        if(user)
+          +nav_item_dropdown("#")(label=user.firstname + ' ' + user.lastname)
+            li
+              .navbar-login
+                .row
+                  .col-lg-4
+                    p.text-center
+                      span.glyphicon.glyphicon-user.icon-size
+                  .col-lg-8
+                    p.text-left
+                      strong=user.firstname + ' ' + user.lastname
+                    p.text-left.small=user.email
+                    p.text-left
+                      a.btn.btn-primary.btn-block.btn-sm(href='/profile') Profile
+
+                //.email=user.email
+                //.username=user.username
+            +nav_divider
+            +nav_item("/logout") Déconnexion
+          if(organization)
+            +nav_item_dropdown("#")(label=organization.name)
+              each org in user.organizations
+                +nav_item('/organizations/' + org._id)=org.name
+              +nav_divider
+              +nav_header Actions
+              +nav_item("/organizations/new") Créer une nouvelle organisation<br><em>(entreprise, commerce, association, etc. )</em>
+
+      form.navbar-form
+        .form-group(style='display:inline;')
+          .input-group(style='display:table;')
+            span.input-group-addon(style='width:1%;')
+              span.glyphicon.glyphicon-search
+            input.form-control(name='search', placeholder='Search Here', autocomplete='off', autofocus='autofocus', type='text')
+nav.navbar

@@ -1,0 +1,13 @@
+extends layout
+include components/loginForm
+include components/registrationForm
+
+block content
+  h2 Vous avez été invité à administrer l'organisation ...
+  h3 J'ai déjà un compte
+  form(action='/login', method='post')
+    +loginForm()
+
+  h3 Je veux créer un compte
+  form(action='/register', method='post')
+    +registrationForm()

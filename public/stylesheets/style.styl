@@ -1,0 +1,73 @@
+.navbar-login
+  width 305px
+  padding 10px
+  padding-bottom 0
+
+.navbar-login-session
+  padding 10px
+  padding-bottom 0
+  padding-top 0
+
+.icon-size
+  font-size 87px
+
+.sidebar
+  background #f5f5f5
+  border-right 1px solid #eee
+  padding-top 1rem
+  font-size 12px
+  padding-bottom 10rem
+
+  .arrow
+    position absolute
+    font-size 10px
+    margin-right .5rem
+    left -1.5em
+  ul
+    list-style-type none
+    margin 0
+    padding-left 1em
+
+  li
+    display none
+    position relative
+    > .arrow:before
+      content: '▶'
+  li.open > ul > li
+    display block
+  li.open > .arrow:before
+    content: '▼'
+
+  ul.nav
+    padding 1rem
+    > li
+      display block
+      > a
+        padding 0
+
+
+.admin.entities
+  tr
+    margin-top -2px
+  tfoot
+    opacity .5
+    .drag-handle span
+      display none
+
+.admin.entities td,
+tbody tr.list-entity td,
+.list-entity td
+  vertical-align middle
+  input,textarea
+    width 100%
+
+  &.drag-handle
+    text-align center
+    width 1.5rem
+    vertical-align middle
+    cursor move
+    span
+      opacity .2
+    &:hover
+      span
+        opacity .5

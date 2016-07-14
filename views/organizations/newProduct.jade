@@ -1,0 +1,39 @@
+extends ../layout
+include ../components/module
+
+block content
+  input#formUrl(type='hidden', value='/api/organizations/#{organization._id}/products')
+  input#organizationUrl(type='hidden', value='/organizations/#{organization._id}')
+  input#formMethod(type='hidden', value='post')
+
+  .container#productForm
+    a.btn.btn-default(href='/organizations/#{organization._id}')
+      i.glyphicon.glyphicon-arrow-left &nbsp;
+      span Retour à l'organisation
+
+    h2 Nouveau Produit
+
+    .form-group
+      label.form-label Nom du produit
+      input#productName(type='text').form-control
+
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title Partir d'un produit existant
+      .panel-body
+        .form-group
+          label.control-label Organisation
+          select#organizations-select.form-control(name=organization)
+            each org in organizations
+              option(value=org._id)= org.name
+        .form-group
+          label.control-label Produit
+          select.form-control(name=product)
+
+    .panel-group.accordion
+      each module in modules
+        +module(module)
+
+    button.btn.btn-primary.save Enregistrer
+block page_scripts
+  script(src='/javascripts/productForm.js')

@@ -1,0 +1,23 @@
+include ./addressForm
+mixin organizationForm(org)
+  -org = (typeof org==='undefined')? {} : org;
+  .form-group
+    label.col-sm-2.control-label Raison sociale
+    .col-sm-10
+      input.form-control(placeholder='La ferme du moulin', name='organization[name]', value=org.name)
+  .form-group
+    label.col-sm-2.control-label Forme juridique
+    .col-sm-10
+      select(name='organization[legalForm]').form-control
+        option(value='association', selected=(org.legalForm === 'association')) Association à but non lucratif
+        option(value='entreprise', selected=(org.legalForm === 'entreprise')) S.à.R.L., S.A.S., S.A.
+        option(value='independant', selected=(org.legalForm === 'independant')) Micro-entreprise, E.U.R.L., E.I.
+  .form-group
+    label.col-sm-2.control-label Secteur d'activité
+    .col-sm-10
+      select(name='organization[activitySector]').form-control
+        option(value='small_business') Association à but non lucratif
+        option(value='company') S.à.R.L., S.A.S., S.A.
+        option(value='freelance') Micro-entreprise, E.U.R.L.
+  +address_form('organization[address]', org.address)
+          
