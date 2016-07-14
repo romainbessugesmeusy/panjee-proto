@@ -24,11 +24,12 @@ block content
         .form-group
           label.control-label Organisation
           select#organizations-select.form-control(name=organization)
+            option
             each org in organizations
               option(value=org._id)= org.name
         .form-group
           label.control-label Produit
-          select.form-control(name=product)
+          select#product-select.form-control(name=product)
 
     .panel-group.accordion
       each module in modules

@@ -1,6 +1,6 @@
 mixin moduleField(module, field, value)
   -value = value || field.value
-  .form-group.moduleField
+  .form-group.moduleField(data-type=field.type)
     label.control-label=field.label
     +#{'field_' + field.type}(module.name + '.' + field.name, field, value)
 
@@ -14,11 +14,11 @@ mixin field_radioButtonGroup(fieldName, field, value)
 
 mixin field_number(fieldName, field, value)
   -value = value || ''
-  input.form-control(type='text', value=value, data-name=fieldName)
+  input.form-control(type='text', value=value, data-value=value, data-name=fieldName)
 
 mixin field_text(fieldName, field, value)
   -value = value || ''
-  input.form-control(type='text', value=value, data-name=fieldName)
+  input.form-control(type='text', value=value, data-value=value, data-name=fieldName)
 
 mixin field_textarea(fieldName, field, value)
   -value = value || ''
@@ -28,8 +28,9 @@ mixin module(data, value)
   -value = value || {}
   div.panjeeModule.panel.panel-default
     .panel-heading
-      h3.panel-title=data.name
-    .panel-collapse.collapse.in
+      h3.panel-title
+        a(data-toggle='collapse', href='#panelContent_#{data.name}')=data.name
+    .panel-collapse.collapse.in(id='panelContent_#{data.name}')
       .panel-body
         .fields
           each field in data.fields
